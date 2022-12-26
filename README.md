@@ -24,4 +24,4 @@ yarn lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Starting Time :- 2.00 PM 24th Dec 2022
-### End Time :- 4.30 PM 264h Dec 2022
+### End Time :- 4.30 PM 24h Dec 2022
