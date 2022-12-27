@@ -63,12 +63,21 @@
 </template>
 
 <script>
+/**
+ * @description: This Method sorts of array of object on status.
+ * @param {[]} tasks : This task array has to be sorted
+ */
 function sortingByStatus(tasks = []) {
   tasks.sort((a, b) => {
     return Number(b.done) - Number(a.done);
   });
   return tasks;
 }
+
+/**
+ * @description: This Method sorts of array of object.
+ * @param {[]} tasks : This task array hsa to be sorted.
+ */
 function getSortedTasks(tasks = []) {
   tasks.sort(function (a, b) {
     const nameA = a.name.toUpperCase();
@@ -105,6 +114,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * @description: This method add the task in the list and according sorting happen;
+     */
     addTask() {
       if (this.taskName.replace(/^\s+|\s+$/gm, "").length) {
         console.log(`${this.taskName} is added to to-do list`);
@@ -128,38 +140,47 @@ export default {
         console.log(`Please Enter the task`);
         return;
       }
-      const sortedTasks = getSortedTasks([...this.tasks]);
-      this.tasks = [...sortedTasks];
-      console.log(`sorted tasks are`, sortedTasks);
 
       this.taskName = "";
     },
+
+    /**
+     * @description: This method deletes the entry in list
+     * @param {Number} index :This index corresponding item will be deleted
+     */
     deleteTask(index) {
       console.log(`${this.tasks[index].name} is deleted successfully`);
-      this.tasks.splice(index, 1);
+      this.tasks.splice(index, 1); //just add one entry with this index;
     },
+
+    /**
+     * @description: This method change the status by slecting or unselecting the checkbox
+     * @param {Number} index : This index corresponding status will be change
+     */
     changeStatus(index) {
-      console.log(`${this.tasks[index].name} is status changed successfully`);
       this.tasks[index].done = !this.tasks[index].done;
 
       console.log(this.completedTasks);
+
+      // sorting of Status wise: Done status will come first
       setTimeout(() => {
         console.log(this.tasks);
-        this.tasks.sort((a, b) => {
-          return Number(b.done) - Number(a.done);
-        });
+        const sortedTasks = getSortedTasks([...this.tasks]);
+        this.tasks = [...sortedTasks];
       }, 0);
       const completedTasksObj = [...this.tasks].filter((task) => {
         return task.done === true;
       });
+
+      console.log(completedTasksObj);
+
+      //Adding only completed task
+      this.completedTasks = [];
       for (let i = 0; i < completedTasksObj.length; i++) {
         if (this.completedTasks.indexOf(completedTasksObj[i].name) === -1) {
           this.completedTasks.push(completedTasksObj[i].name);
         }
       }
-      //const sortedTasks = sortingByStatus([...this.tasks]);
-      // this.tasks = [];
-      //this.tasks = [...sortedTasks];
     },
   },
 };

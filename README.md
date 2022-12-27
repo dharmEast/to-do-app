@@ -1,5 +1,12 @@
 # to-do-app
 
+Qustion Covered 
+>Implemented functionality to add new todo items via the input box. :- `Done`
+>Implement functionality to mark todo items as completed when the checkbox is checked. :- `Done`
+>Implement functionality to remove an item when the “Remove” link is pressed :- `Done`
+>Implement sorting of items by drag and drop :- `Note Done Due To Requirement Did Not Clear`
+>For bonus points, Enable sorting between lists to mark/unmark item as done :- `Done`
+
 ## Project setup
 ```
 yarn install
